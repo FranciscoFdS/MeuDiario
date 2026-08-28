@@ -1,0 +1,522 @@
+@charset "UTF-8";
+/* ============================================
+   DIÁRIO VISUAL — tema "CADERNO"
+   O site inteiro é uma folha de caderno: papel
+   creme, pauta horizontal, margem vermelha e
+   espiral furada na lateral. Títulos "à mão",
+   post-its de fita crepe, tags carimbadas.
+   ============================================ */
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Work+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap");
+select {
+  color: var(--ink);
+  background: var(--paper-card);
+  border: 1px solid rgba(47, 43, 34, 0.15);
+  border-radius: 8px;
+  padding: 10px 14px;
+}
+
+textarea {
+  width: min(480px, 90%);
+  height: 150px;
+  resize: none;
+  padding: 14px 16px;
+  background: var(--paper-card);
+  border: 1px solid rgba(47, 43, 34, 0.15);
+  border-radius: 8px;
+  color: var(--ink);
+  outline: none;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  /* pauta dentro do textarea, como folha de verdade */
+  background-image: repeating-linear-gradient(var(--paper-card) 0px, var(--paper-card) 27px, var(--line-blue) 28px);
+  line-height: 28px;
+  transition: box-shadow var(--transition);
+}
+textarea:focus {
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Papel */
+  --paper: #f6f1e4;
+  --paper-card: #fffcf3;
+  --line-blue: rgba(91, 124, 189, 0.28);
+  --margin-red: rgba(200, 90, 84, 0.55);
+  /* Tinta */
+  --ink: #322d22;
+  --ink-soft: #746c58;
+  /* Canetas / fitas */
+  --accent: #c1443c;
+  --accent-soft: rgba(193, 68, 60, 0.14);
+  --tape: #f2c85b;
+  --tape-mint: #9fbfae;
+  --before-color: #f2c85b;
+  --shadow: rgba(47, 43, 34, 0.18);
+  /* Tipografia */
+  --font-hand: "Caveat", cursive;
+  --font-body: "Work Sans", sans-serif;
+  --font-mono: "Space Mono", monospace;
+  --radius: 14px;
+  --transition: 0.25s ease;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  position: relative;
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  min-height: 100vh;
+  padding-left: 90px;
+  /* pauta horizontal + margem vertical vermelha, como folha de caderno */
+  background-image: repeating-linear-gradient(var(--paper) 0px, var(--paper) 30px, var(--line-blue) 31px), linear-gradient(90deg, transparent 78px, var(--margin-red) 79px, var(--margin-red) 80px, transparent 81px);
+  background-attachment: fixed;
+  /* espiral furada da lateral */
+}
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 56px;
+  background-color: var(--paper);
+  background-image: radial-gradient(circle, rgba(47, 43, 34, 0.16) 0 6px, transparent 7px);
+  background-size: 56px 46px;
+  background-position: 0 14px;
+  box-shadow: inset -6px 0 10px -6px rgba(47, 43, 34, 0.15);
+  z-index: 1000;
+  pointer-events: none;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--paper);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ink-soft);
+  border-radius: 10px;
+  border: 2px solid var(--paper);
+}
+
+/* HEADER */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 16px 60px 16px 106px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(246, 241, 228, 0.9);
+  backdrop-filter: blur(8px);
+  border-bottom: 2px dashed rgba(47, 43, 34, 0.2);
+  z-index: 999;
+}
+header h1 {
+  font-family: var(--font-hand);
+  font-weight: 700;
+  color: var(--ink);
+  font-size: 2.2rem;
+  line-height: 1;
+  transform: rotate(-1.5deg);
+  display: inline-block;
+}
+header p {
+  color: var(--ink-soft);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+}
+header nav {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+header a {
+  position: relative;
+  text-decoration: none;
+  color: var(--ink);
+  font-family: var(--font-hand);
+  font-weight: 600;
+  font-size: 1.25rem;
+  transition: color var(--transition);
+  margin-left: 6px;
+}
+header a::after {
+  content: "";
+  position: absolute;
+  left: -4px;
+  bottom: -4px;
+  width: 0%;
+  height: 3px;
+  border-radius: 3px;
+  background-color: var(--accent);
+  transition: width var(--transition);
+}
+header a:hover {
+  color: var(--accent);
+}
+header a:hover::after {
+  width: calc(100% + 8px);
+}
+
+/* HOME — capa do caderno */
+.home {
+  position: relative;
+  width: min(820px, 85%);
+  margin: 150px auto 60px;
+  background: var(--paper-card);
+  border: 1px solid rgba(47, 43, 34, 0.1);
+  border-radius: var(--radius);
+  padding: 50px 40px 44px;
+  text-align: center;
+  box-shadow: 0 18px 0 -12px var(--shadow), 0 20px 35px var(--shadow);
+  transform: rotate(-0.4deg);
+  /* fita crepe segurando a folha */
+}
+.home::before, .home::after {
+  content: "";
+  position: absolute;
+  top: -16px;
+  width: 90px;
+  height: 34px;
+  background: var(--tape);
+  opacity: 0.75;
+  box-shadow: 0 4px 6px rgba(47, 43, 34, 0.15);
+}
+.home::before {
+  left: 40px;
+  transform: rotate(-8deg);
+}
+.home::after {
+  right: 40px;
+  transform: rotate(6deg);
+  background: var(--tape-mint);
+}
+.home h1 {
+  font-family: var(--font-hand);
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 16px;
+  font-size: 3rem;
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 8px;
+}
+.home p {
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  line-height: 1.85;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+/* POSTS */
+#post {
+  width: min(820px, 85%);
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding-bottom: 130px;
+}
+#post .post {
+  position: relative;
+  background: var(--paper-card);
+  border: 1px solid rgba(47, 43, 34, 0.1);
+  border-radius: var(--radius);
+  padding: 26px 26px 76px;
+  box-shadow: 0 10px 22px var(--shadow);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+#post .post:nth-child(odd) {
+  transform: rotate(-0.5deg);
+}
+#post .post:nth-child(even) {
+  transform: rotate(0.5deg);
+}
+#post .post:hover {
+  transform: rotate(0deg) translateY(-3px);
+  box-shadow: 0 16px 30px var(--shadow);
+}
+#post .post {
+  /* pedacinho de fita no topo */
+}
+#post .post::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 28px;
+  width: 60px;
+  height: 22px;
+  background-image: linear-gradient(to bottom, var(--cor-tipo, #ccc), var(--cor-humor, #ccc));
+  opacity: 0.7;
+  transform: rotate(-3deg);
+}
+#post .post h2 {
+  font-family: var(--font-hand);
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 10px;
+  font-size: 1.7rem;
+}
+#post .post p {
+  color: var(--ink-soft);
+}
+#post .post {
+  /* data / humor / tipo — carimbados */
+}
+#post .post .meta,
+#post .post time,
+#post .post .tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.5px;
+  color: var(--accent);
+  border: 1px dashed var(--accent);
+  border-radius: 20px;
+  padding: 3px 10px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+#post .post img {
+  display: block;
+  max-width: 60vh;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  margin-top: 16px;
+  border: 1px solid rgba(47, 43, 34, 0.15);
+  filter: saturate(-100%);
+}
+#post .post .hora {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+#post .post .excluir {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background-image: linear-gradient(to bottom, var(--cor-tipo, #ccc), var(--cor-humor, #ccc));
+  border: none;
+  transition: 0.4s;
+  cursor: pointer;
+  text-shadow: 0 0 8px #322d22;
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+}
+#post .post .excluir:hover {
+  transition: 0.4s;
+  transform: rotate(360deg) scale(1.1);
+  background-image: none;
+  background-color: #ff1100;
+}
+#post .post .editar {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background-image: linear-gradient(to bottom, var(--cor-humor, #ccc), var(--cor-tipo, #ccc));
+  border: none;
+  transition: 0.4s;
+  right: 70px;
+  bottom: 15px;
+  cursor: pointer;
+  text-shadow: 0 0 8px #322d22;
+  position: absolute;
+}
+#post .post .editar:hover {
+  transition: 0.4s;
+  transform: rotate(360deg) scale(1.1);
+  background-image: none;
+  background-color: #c8bd90;
+}
+
+/* BOTÃO FLUTUANTE — como um alfinete/percevejo */
+#criarPost {
+  position: fixed;
+  right: 34px;
+  bottom: 34px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 3px solid var(--paper-card);
+  outline: 1px solid rgba(47, 43, 34, 0.15);
+  background: var(--accent);
+  color: var(--paper-card);
+  font-size: 1.9rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 10px 22px var(--shadow);
+  transition: transform var(--transition), background var(--transition);
+}
+#criarPost:hover {
+  background: #a1362f;
+  transform: scale(1.08) rotate(90deg);
+}
+
+/* MODAL */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px);
+  z-index: 1000;
+}
+.modal .caixa {
+  width: 650px;
+  max-height: 80vh;
+  overflow-y: auto;
+  background: white;
+  border-radius: 20px;
+  padding: 25px;
+  border: 2px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.modal h2 {
+  font-size: 2rem;
+  color: var(--ink);
+  text-align: center;
+  margin-bottom: 10px;
+}
+.modal p {
+  font-weight: 600;
+  color: var(--ink);
+}
+.modal input,
+.modal textarea,
+.modal select {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  background: white;
+  font-size: 1rem;
+  outline: none;
+  transition: 0.25s;
+}
+.modal input:focus,
+.modal textarea:focus,
+.modal select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(106, 166, 255, 0.15);
+}
+.modal textarea {
+  min-height: 170px;
+  resize: vertical;
+}
+.modal input[type=file] {
+  cursor: pointer;
+  background: #fafafa;
+}
+.modal .botoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 10px;
+}
+.modal button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.25s;
+}
+.modal #cancelar {
+  background: #ececec;
+}
+.modal #cancelar:hover {
+  background: #d8d8d8;
+}
+.modal #publicar {
+  background: var(--accent);
+  color: white;
+}
+.modal #publicar:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+/* RESPONSIVO */
+@media (max-width: 700px) {
+  body {
+    padding-left: 0;
+    background-image: repeating-linear-gradient(var(--paper) 0px, var(--paper) 30px, var(--line-blue) 31px);
+  }
+  body::before {
+    display: none;
+  }
+  header {
+    flex-direction: column;
+    gap: 8px;
+    padding: 18px;
+  }
+  header h1 {
+    transform: none;
+  }
+  header nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+  }
+  .home {
+    width: 92%;
+    margin-top: 175px;
+    padding: 34px 22px;
+    transform: none;
+  }
+  .home h1 {
+    font-size: 2.3rem;
+  }
+  .home::before, .home::after {
+    display: none;
+  }
+  #post .post {
+    transform: none !important;
+    padding: 22px 20px;
+  }
+  .modal {
+    padding: 20px;
+  }
+  .modal input,
+  .modal select,
+  .modal textarea,
+  .modal #publicar {
+    width: 100%;
+  }
+  #criarPost {
+    right: 20px;
+    bottom: 20px;
+    width: 56px;
+    height: 56px;
+    font-size: 1.6rem;
+  }
+}/*# sourceMappingURL=style.css.map */
