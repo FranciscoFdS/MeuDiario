@@ -19,5 +19,5 @@ export const pool = mysql2.createPool({
     
     uri: process.env.URI,
     waitForConnections :true,
-    connectionLimit: 35,
+    connectionLimit: 2,
 })

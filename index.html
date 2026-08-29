@@ -1,419 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <link icon rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTq6l8kQN0MWUy0sWAxEW2Oi-qxkuCm8UD9FoAjCo4_uA&s=10" type="image/x-icon">
-    <title>Diário visual</title>
+
+
+<link rel="stylesheet" href="login.css">
+
+<title>Login</title>
+
 </head>
+
 <body>
-    <!-- Shift + Alt + F-->
-    <header>        
-        <h1>Meu Diario</h1>
-        <p>13/07/2026🐬🌊🌺</p>
-                <button id="criarPost" style="display:flex;">+</button>
-        <div class="seach" style="display:flex;">
-            <select id="viewPost">
-                <option value="todos">🐒 Todos</option>
-    <option value="diario">📖 Diário</option>
-    <option value="meta">🎯 Meta</option>
-    <option value="pensamento">💭 Pensamento</option>
-    <option value="ideia">💡 Ideia</option>
-    <option value="lembrete">📌 Lembrete</option>
-    <option value="frase">✨ Frase</option>
-    <option value="momento">📷 Momento</option>
-    <option value="estudo">📚 Estudo</option>
-    <option value="projeto">🛠️ Projeto</option>
-    <option value="aleatorio">🎲 Aleatório</option>
-</select>
-     </div>
-    </header>
-   
 
-        <div class="home">
-            <h1>cOômeEEçou Éé todo DIa!</h1>
-           <p>Estou fazendo ele para aprender sobre BD, Js, HTML, CSS... <br> vai ser algo básico mas espero qeu funcional rsrs, enfim, esse é meu projeto de ferias!</p> 
+ 
+<section>
+    <div class="box">
+
+        <h1>
+            <span class="cursiva">L</span>OGIN
+        </h1>
+
+        <div class="campo">
+            <label for="usuario">Usuário</label>
+            <input
+                type="text"
+                name="usuario"
+                id="usuario"
+                placeholder="Usuário"
+            >
         </div>
-<div id="post"></div>
 
-        <div class="modal" id="modal" style=" display: none;">
-            <div class="caixa">
-
-            <h2>Crie seu post aqui!</h2>
-            <p>Tipo de post</p>
-<select id="tipoPost">
-    <option value="diario">📖 Diário</option>
-    <option value="meta">🎯 Meta</option>
-    <option value="pensamento">💭 Pensamento</option>
-    <option value="ideia">💡 Ideia</option>
-    <option value="lembrete">📌 Lembrete</option>
-    <option value="frase">✨ Frase</option>
-    <option value="momento">📷 Momento</option>
-    <option value="estudo">📚 Estudo</option>
-    <option value="projeto">🛠️ Projeto</option>
-    <option value="aleatorio">🎲 Aleatório</option>
-</select>
-            <p>Título</p>
-            <input type="text" name="" id="titulo" placeholder="Digite seu título.">
-            <p>texto</p>
-            <textarea name="" id="txt" placeholder="Informe sobre oque ocorreu."></textarea>
-            <p>Arquivo(s)</p>
-            <input type="file" name="" id="file" accept="image/*">
-            <p>Humor</p>
-            <select name="" id="humor">
-                    <option value="" disabled>Selecione</option>
-                    <option value="feliz">😀 Feliz</option>
-                    <option value="animado">🥳 Animado</option>
-                    <option value="tranquilo">😌 Tranquilo</option>
-                    <option value="triste">😢 Triste</option>
-                    <option value="cansado">😴 Cansado</option> 
-                    <option value="gag">😶‍🌫️ Gag</option> 
-                    <option value="orgulhoso">😎 Orgulhoso</option>
-                    <option value="nostalgico">🥹 Nostálgico</option>
-            </select>
-        <div class="botoes">
-            <button id="cancelar">Cancelar</button>
-            <button id="publicar">Publicar</button>
+        <div class="campo">
+            <label for="senha">Senha</label>
+            <input
+                type="password"
+                name="senha"
+                id="senha"
+                placeholder="Senha"
+            >
         </div>
-        </div>
-    
-        </div>
-        </div>
-            
 
-        <script src="script.js"></script>
-    
-
-    <!-- 
-        // ---------- Modulo A🌺
-
-        // introdução básica
-
-       // window.alert('meu diarioo'); // alerta mostrado na janela, tudo que mostra ao usurario fica emntre '', não precisa de ;
-       
-       // window.confirm('Gostou do diario?') // area de confirmação
-
-       //window.prompt('Seu nome:') // area de texto
-
-        // --------- Modulo B🌺
-
-        //aula 05 🐬
-        // aprender guardar dados
-        // quanse ver um igual '=' chamaremos de receber var c1 = carro , null remove tudo da vaga, deixa ela vazia.
-        //É possivel usar acento, não poder usar palavras reservadas
-        
-        //typeof: te fala qual tipo daquela var
-
-
-
-        //aula 06 🐬
-        
-        //var nome =  window.prompt('Seu nome: ');
-        //alert(typeof nome);
-        //alert("Oi " + nome);
-
-        //Numbers.parseInt(variavel) transforma a variavel em inteiro;
-        //Numbers.parseFloat(variavel) transforma a variavel em Float;
-
-        //Hoje em dia só usar Number(variavel) que ele converte, "se vira"
-
-        //conversão de valor para string: string(Variavel) ou variavel.toString()
-
-        //"" << interpolando (concatenação)
-        //'' >> sem interpolar (sem concatenação)
-        // ` << template string serve para não fazer muita concatenação `bla bla bla ${variavel} bla bla bla  ${variavel} ...`
-
-        // variavel.length, me diz o tamanho da string;
-        // variavel.toUpperCase(), transforma tudo em letras MAIÚSCULAS
-        // variavel.toLowerCase(), transforma tudo em letras minusculas
-
-        // document.write() escreve no site funciona colocar as coisas do html como strong, br, h1, etc... 
-
-        //formatar numeros 
-        //  v fixa quantidade de casas deciamais              v troca o ponoto pela virgula, como exemplo
-        // variavel.toFixed(quantidade de casas decimais)replace(".",",");
-
-        //aula 07 🐬
-        //assunto: operadores
-
-        //tipos de operadores : aritmeticos, atribuição, relacionais, logicos, ternarios
-
-        //aritmeticos +, -, /, %, *, **
-
-        // + soma
-        // - subtração
-        // / divisão
-        // % resto da divisão
-        // * multiplicação
-        // ** potência
-
-        //ordem  (), **, * / e %, + e -
-
-        //atribuição
-
-        // +=, -=, /=, *=, **=, %=, ++ e -- (já sei não vou anotar)
-
-        // aula 08 🐬
-
-        //assunto: operadores (parte 2)
-
-        //operadores relacionais
-
-        // >  maior que
-        // <  menor que
-        // >= maior ou igual
-        // <= menor ou igual
-        // == igual (compara apenas o valor)
-        // != diferente
-
-        // === igualdade estrita (valor e tipo)
-        // !== diferença estrita (valor ou tipo diferentes)
-
-        //o resultado de uma comparação é sempre:
-        //true ou false (boolean)
-
-        //operadores lógicos
-
-        // !  não (nega)
-        // && e (as duas condições precisam ser verdadeiras)
-        // || ou (apenas uma condição precisa ser ser verdadeira)
-
-        //ordem dos operadores lógicos:
-        //! -> && -> ||
-
-        //operador ternário
-
-        //condição ? valor_se_true : valor_se_false
-
-        //exemplo:
-        //media >= 7 ? "Aprovado" : "Reprovado";
-
-        //serve para substituir um if/else simples
-
-        //exemplo:
-
-        //var media = 8;
-        //media >= 7 ? "Aprovado" : "Reprovado";
-
-        // --------- Modulo C🌺
-        // Document Object Model (DOM)
-
-        //aula 09 🐬
-
-        //assunto: DOM (Document Object Model)
-
-        //DOM = representação do HTML em forma de objetos.
-        //É o que permite o JavaScript acessar e modificar a página.
-
-        //estrutura:
-
-        //window
-        // └── document
-        //      └── html
-        //          ├── head
-        //          └── body
-        //              ├── h1
-        //              ├── p
-        //              ├── div
-        //              └── ...
-
-        //window = navegador
-        //document = documento HTML
-
-        //selecionando elementos:
-
-        //document.getElementsByTagName("p")
-        //pega elementos pela tag (p, h1, div, etc.)
-        //retorna uma coleção, então usa [0], [1]...
-
-        //document.getElementById("msg")
-        //pega um elemento pelo id
-
-        //document.getElementsByName("nome")
-        //pega pelo atributo name
-
-        //document.getElementsByClassName("classe")
-        //pega pela classe
-
-        //querySelector()
-        //usa seletores CSS
-        //"#id" -> id
-        //".classe" -> classe
-        //"div" -> tag
-
-        //querySelectorAll()
-        //pega todos os elementos encontrados
-
-        //alterando conteúdo:
-
-        //element.innerText
-        //mostra ou altera somente o texto
-
-        //element.innerHTML
-        //mostra ou altera o HTML (aceita tags como <strong>, <br>, etc.)
-
-        //alterando CSS pelo JS:
-
-        //element.style.color = "blue";
-        //element.style.background = "black";
-        //element.style.fontSize = "30px";
-
-        //exemplo:
-
-        //var corpo = document.body;
-        //corpo.style.background = "gray";
-
-        //var p1 = document.getElementsByTagName("p")[0];
-        //p1.style.color = "red";
-
-        //document.write(p1.innerText); //apenas texto
-        //document.write(p1.innerHTML); //texto + HTML
-
-        //Resumo:
-        //DOM = ponte entre o JavaScript e o HTML.
-        //Com ele podemos pegar elementos, alterar texto, HTML e CSS da página.
-
-
-
-        //aula 10 🐬
-
-        //assunto: Eventos DOM
-
-        //evento = qualquer ação que acontece na página.
-        //O JavaScript fica "escutando" e quando o evento acontece, ele executa uma função.
-
-        //Exemplos de eventos:
-
-        //click -> clique simples
-        //dblclick -> clique duplo
-        //mousedown -> apertou o botão do mouse
-        //mouseup -> soltou o botão do mouse
-        //mousemove -> moveu o mouse dentro
-        //mouseenter -> mouse entrou no elemento
-        //mouseout -> mouse saiu do elemento
-
-        //keydown -> tecla pressionada
-        //keyup -> tecla solta
-        //keypress -> tecla pressionou uma tecla que gera caractere
-
-        //load -> página terminou de carregar
-        //resize -> janela mudou de tamanho
-
-        //Todo evento precisa de uma função para acontecer.
-
-        //Exemplo no HTML:
-
-        //<div id="area" onclick="clicar()">
-        //    Interaja...
-        //</div>
-
-        //Quando clicar na div, a função clicar() será executada.
-
-        //Criando a função: 
-
-        //function clicar() {
-        //    //código que será executado
-        //}
-
-        //Também podemos adicionar eventos pelo JavaScript.
-        //Essa é a forma mais recomendada.
-
-        //var area = document.getElementById("area");
-
-        //area.addEventListener("click", clicar);
-
-        //addEventListener() possui dois parâmetros:
-
-        //1º -> nome do evento ("click", "mouseenter"...)
-        //2º -> nome da função (SEM colocar os parênteses)
-
-        //ERRADO:
-        //area.addEventListener("click", clicar());
-
-        //CERTO:
-        //area.addEventListener("click", clicar);
-
-        //Podemos adicionar vários eventos ao mesmo elemento.
-
-        //area.addEventListener("click", clicar);
-        //area.addEventListener("mouseenter", entrar);
-        //area.addEventListener("mouseout", sair);
-
-        //Cada evento chama uma função diferente.
-
-        //Exemplo completo:
-
-        //function clicar() {
-        //    area.innerText = "Clicou!";
-        //    area.style.background = "red";
-        //}
-
-        //function entrar() {
-        //    area.innerText = "Entrou!";
-        //}
-
-        //function sair() {
-        //    area.innerText = "Saiu!";
-        //    area.style.background = "green";
-        //}
-
-        //innerText
-        //Lê ou altera apenas o texto do elemento.
-        //Não interpreta HTML.
-
-        //area.innerText = "Olá";
-
-        //innerHTML
-        //Lê ou altera o conteúdo HTML.
-        //Interpreta tags como <strong>, <br>, <h1>...
-
-        //area.innerHTML = "<strong>Olá</strong>";
-
-        //style
-        //Permite alterar qualquer propriedade CSS pelo JavaScript.
-
-        //area.style.background = "blue";
-        //area.style.color = "white";
-        //area.style.width = "300px";
-        //area.style.height = "200px";
-
-        //No JavaScript, propriedades CSS compostas usam camelCase.
-
-        //background-color -> backgroundColor
-        //font-size -> fontSize
-        //text-align -> textAlign
-
-        //this
-        //Dentro da função do evento, "this" representa o elemento que disparou o evento.
-
-        //function clicar() {
-        //    this.style.background = "red";
-        //}
-
-        //É igual fazer:
-
-        //area.style.background = "red";
-
-        //Funções são blocos de código.
-        //Elas só executam quando são chamadas.
-
-        //function mensagem() {
-        //    alert("Olá!");
-        //}
-
-        //mensagem(); //executa a função
-
-        //Resumo:
-
-        //Evento = ação que acontece na página.
-        //Função = código que será executado.
-        //addEventListener() = liga um evento a uma função.
-        //innerText = altera apenas o texto.
-        //innerHTML = altera o HTML.
-        //style = altera o CSS.
-        //É possível adicionar vários eventos ao mesmo elemento.
-        </scrip> -->
+        <button type="submit" id="entrar">
+            <span class="cursiva">E</span>ntrar
+        </button>
+
+    </div>
+</section>
+
+<script>
+    const entrarButton = document.getElementById('entrar');
+    entrarButton.addEventListener('click', function() {
+        const usuario = document.getElementById('usuario').value;
+        const senha = document.getElementById('senha').value;
+
+        if (usuario === 'fds?' && senha === '#Francisco90') {
+            window.open('diario.html');
+        } else {
+            alert('Usuário ou senha incorretos. Tente novamente.');
+        }
+    });
+</script>
 
 </body>
+
 </html>

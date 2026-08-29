@@ -129,16 +129,9 @@ btnPublicar.addEventListener("click", async () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(dados),
-    }).then(
-      (modal.style.display = "none"),
-      limparFormulario(),
-      await carregarPosts(),
-      window.location.reload()
-    );
+    }).then(await carregarPosts(), window.location.reload());
 
     // 4. Fecha o modal
-
-    // 5. Atualiza os posts
   } catch (erro) {
     console.error("Erro ao publicar:", erro);
   }
