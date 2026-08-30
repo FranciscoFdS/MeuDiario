@@ -1,0 +1,1292 @@
+
+/* ========================================
+   CONFIGURAÇÕES GERAIS
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    color: white;
+
+    background-image: url("./imagens/login.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+/* Camada escura */
+
+body::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.38);
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+/* ========================================
+   HEADER
+======================================== */
+
+header {
+    position: sticky;
+
+    top: 0;
+
+    z-index: 50;
+
+    width: 900px;
+    max-width: calc(100% - 40px);
+
+    margin: 0 auto;
+
+    padding: 18px 22px;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    gap: 14px;
+
+    background: rgba(255, 255, 255, 0.12);
+
+    backdrop-filter: blur(18px) saturate(150%);
+    -webkit-backdrop-filter: blur(18px) saturate(150%);
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    border-top: none;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.25),
+        inset 0 1px 1px rgba(255, 255, 255, 0.35);
+}
+
+header h1 {
+    margin: 0;
+
+    font-size: 25px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    text-shadow:
+        0 3px 15px rgba(0, 0, 0, 0.35);
+}
+
+header > p {
+    flex: 1;
+
+    margin: 0;
+
+    color: rgba(255, 255, 255, 0.75);
+
+    font-size: 13px;
+}
+
+
+/* ========================================
+   FILTRO
+======================================== */
+
+.seach {
+    display: flex;
+
+    align-items: center;
+
+    margin-left: auto;
+}
+
+#viewPost {
+    width: 180px;
+
+    height: 40px;
+
+    padding: 0 13px;
+
+    border: 1px solid rgba(255, 255, 255, 0.28);
+
+    border-radius: 13px;
+
+    background: rgba(255, 255, 255, 0.10);
+
+    color: white;
+
+    outline: none;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    transition: 0.3s;
+}
+
+#viewPost:hover,
+#viewPost:focus {
+    border-color: rgba(255, 255, 255, 0.65);
+
+    background: rgba(255, 255, 255, 0.17);
+}
+
+#viewPost option {
+    background: #222;
+
+    color: white;
+}
+
+
+/* ========================================
+   BOTÃO CRIAR POST
+======================================== */
+
+button#criarPost {
+    position: fixed;
+
+    right: 20px;
+    bottom: -600px;
+
+    z-index: 100;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 55px;
+    height: 55px;
+
+    padding: 0;
+
+    border: 1px solid rgba(255, 255, 255, 0.45);
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.18);
+
+    color: white;
+
+    font-size: 30px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    box-shadow:
+        inset 0 1px rgba(255, 255, 255, 0.4),
+        0 10px 30px rgba(0, 0, 0, 0.35);
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease;
+}
+
+button#criarPost:hover {
+    background: rgba(255, 255, 255, 0.30);
+
+    transform:
+        scale(1.06)
+        rotate(90deg);
+}
+
+button#criarPost:active {
+    transform:
+        scale(0.95)
+        rotate(90deg);
+}
+
+
+/* ========================================
+   ÁREA INICIAL
+======================================== */
+
+.home {
+    position: relative;
+
+    z-index: 1;
+
+    width: 900px;
+
+    max-width: calc(100% - 40px);
+
+    margin: 25px auto;
+
+    padding: 28px 25px;
+
+    background: rgba(255, 255, 255, 0.12);
+
+    backdrop-filter: blur(18px) saturate(150%);
+    -webkit-backdrop-filter: blur(18px) saturate(150%);
+
+    border: 1px solid rgba(255, 255, 255, 0.30);
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.30),
+        inset 0 1px 1px rgba(255, 255, 255, 0.40),
+        inset 0 -1px rgba(255, 255, 255, 0.08);
+}
+
+.home h1 {
+    margin: 0 0 8px;
+
+    color: white;
+
+    font-size: 23px;
+
+    letter-spacing: 1px;
+
+    text-shadow:
+        0 3px 15px rgba(0, 0, 0, 0.30);
+}
+
+.home p {
+    margin: 0;
+
+    color: rgba(255, 255, 255, 0.80);
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+/* ========================================
+   ÁREA DOS POSTS
+======================================== */
+
+#post {
+    position: relative;
+
+    z-index: 1;
+
+    width: 900px;
+
+    max-width: calc(100% - 40px);
+
+    margin: 0 auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+
+    padding-bottom: 80px;
+}
+
+
+/* ========================================
+   POST
+======================================== */
+
+.post {
+    position: relative;
+
+    width: 100%;
+
+    padding: 24px 25px 58px;
+
+    background: rgba(255, 255, 255, 0.12);
+
+    backdrop-filter: blur(18px) saturate(150%);
+    -webkit-backdrop-filter: blur(18px) saturate(150%);
+
+    border: 1px solid rgba(255, 255, 255, 0.30);
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.28),
+        inset 0 1px 1px rgba(255, 255, 255, 0.40),
+        inset 0 -1px rgba(255, 255, 255, 0.08);
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.post:hover {
+    transform: translateY(-3px);
+
+    background: rgba(255, 255, 255, 0.16);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.35),
+        inset 0 1px 1px rgba(255, 255, 255, 0.45);
+}
+
+
+/* ========================================
+   DATA / HORA
+======================================== */
+
+.post .hora {
+    margin: 0 0 9px;
+
+    color: rgba(255, 255, 255, 0.58);
+
+    font-size: 12px;
+}
+
+
+/* ========================================
+   TÍTULO
+======================================== */
+
+.post h2 {
+    margin: 0 0 9px;
+
+    color: white;
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    line-height: 1.35;
+
+    overflow-wrap: anywhere;
+
+    text-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.35);
+}
+
+
+/* ========================================
+   CATEGORIA
+======================================== */
+
+.post h2::after {
+    display: inline-block;
+
+    margin-left: 10px;
+
+    color: rgba(255, 255, 255, 0.65);
+
+    font-size: 12px;
+
+    font-weight: normal;
+
+    white-space: nowrap;
+}
+
+
+/* Categorias */
+
+.post.diario h2::after {
+    content: "📖 Diário";
+}
+
+.post.meta h2::after {
+    content: "🎯 Meta";
+}
+
+.post.pensamento h2::after {
+    content: "💭 Pensamento";
+}
+
+.post.ideia h2::after {
+    content: "💡 Ideia";
+}
+
+.post.lembrete h2::after {
+    content: "📌 Lembrete";
+}
+
+.post.frase h2::after {
+    content: "✨ Frase";
+}
+
+.post.momento h2::after {
+    content: "📷 Momento";
+}
+
+.post.estudo h2::after {
+    content: "📚 Estudo";
+}
+
+.post.projeto h2::after {
+    content: "🛠️ Projeto";
+}
+
+.post.aleatorio h2::after {
+    content: "🎲 Aleatório";
+}
+
+
+/* ========================================
+   TAG / HUMOR
+======================================== */
+
+.post > span,
+.tag-humor {
+
+    display: inline-block;
+
+    margin-bottom: 10px;
+
+    padding: 5px 13px;
+
+    border-radius: 20px;
+
+    color: white;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    letter-spacing: 0.3px;
+
+    background-size: 300% 300%;
+
+    border: 1px solid rgba(255, 255, 255, 0.35);
+
+    box-shadow:
+        inset 0 1px rgba(255, 255, 255, 0.30),
+        0 5px 15px rgba(0, 0, 0, 0.15);
+
+    animation:
+        moverGradiente 5s ease infinite;
+}
+
+
+/* ========================================
+   CORES DOS HUMORES
+======================================== */
+
+.humor-meta-felicidade {
+
+    background:
+        linear-gradient(
+            120deg,
+            #ff1744,
+            #ff5252,
+            #ffd600,
+            #ff9800,
+            #ff1744
+        );
+}
+
+.humor-diario-tristeza {
+
+    background:
+        linear-gradient(
+            120deg,
+            #2979ff,
+            #651fff,
+            #aa00ff,
+            #2979ff
+        );
+}
+
+.humor-evento-empolgacao {
+
+    background:
+        linear-gradient(
+            120deg,
+            #ff4081,
+            #ff6d00,
+            #ff1744,
+            #ff4081
+        );
+}
+
+.humor-pensamento-calma {
+
+    background:
+        linear-gradient(
+            120deg,
+            #00bcd4,
+            #00e676,
+            #2979ff,
+            #00bcd4
+        );
+}
+
+.humor-felicidade {
+
+    background:
+        linear-gradient(
+            120deg,
+            #ff1744,
+            #ff9100,
+            #ffd600,
+            #ff1744
+        );
+}
+
+.humor-tristeza {
+
+    background:
+        linear-gradient(
+            120deg,
+            #2979ff,
+            #651fff,
+            #2979ff
+        );
+}
+
+.humor-raiva {
+
+    background:
+        linear-gradient(
+            120deg,
+            #d50000,
+            #ff1744,
+            #ff6d00,
+            #d50000
+        );
+}
+
+.humor-ansiedade {
+
+    background:
+        linear-gradient(
+            120deg,
+            #7c4dff,
+            #00b8d4,
+            #7c4dff
+        );
+}
+
+.humor-calma {
+
+    background:
+        linear-gradient(
+            120deg,
+            #00c853,
+            #00bfa5,
+            #00b0ff,
+            #00c853
+        );
+}
+
+.humor-empolgacao {
+
+    background:
+        linear-gradient(
+            120deg,
+            #ff4081,
+            #ff6d00,
+            #ffd600,
+            #ff4081
+        );
+}
+
+.humor-padrao {
+
+    background:
+        linear-gradient(
+            120deg,
+            #777,
+            #ddd,
+            #555,
+            #777
+        );
+}
+
+
+/* ========================================
+   ANIMAÇÃO DO GRADIENTE
+======================================== */
+
+@keyframes moverGradiente {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+/* ========================================
+   TEXTO DO POST
+======================================== */
+
+.post p {
+    margin: 8px 0;
+
+    color: rgba(255, 255, 255, 0.92);
+
+    font-size: 15px;
+
+    line-height: 1.65;
+
+    word-wrap: break-word;
+
+    overflow-wrap: anywhere;
+
+    white-space: pre-wrap;
+}
+
+
+/* ========================================
+   IMAGEM
+======================================== */
+
+.post img {
+
+    display: block;
+
+    width: auto;
+
+    max-width: 100%;
+
+    max-height: 350px;
+
+    height: auto;
+
+    margin: 15px auto;
+
+    border-radius: 15px;
+
+    object-fit: contain;
+
+    background: rgba(0, 0, 0, 0.18);
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+
+/* ========================================
+   BOTÕES EDITAR / EXCLUIR
+======================================== */
+
+.post button {
+
+    position: absolute;
+
+    bottom: 13px;
+
+    width: 36px;
+    height: 36px;
+
+    padding: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    color: rgba(255, 255, 255, 0.70);
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.15s ease;
+}
+
+
+/* EDITAR */
+
+button.editar {
+    right: 58px;
+}
+
+button.editar:hover {
+
+    background:
+        rgba(80, 180, 255, 0.20);
+
+    color: #7ecbff;
+
+    transform: scale(1.08);
+}
+
+
+/* EXCLUIR */
+
+button.excluir {
+    right: 14px;
+}
+
+button.excluir:hover {
+
+    background:
+        rgba(255, 60, 80, 0.20);
+
+    color: #ff6573;
+
+    transform: scale(1.08);
+}
+
+
+/* Clique */
+
+.post button:active {
+    transform: scale(0.90);
+}
+
+
+/* ========================================
+   MODAL
+======================================== */
+
+.modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1000;
+
+    display: flex;
+     
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    background:
+        rgba(0, 0, 0, 0.60);
+
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    overflow-y: hidden;
+}
+
+
+/* ========================================
+   CAIXA DO MODAL
+======================================== */
+
+.caixa {
+  
+
+    width: 400px;
+
+    max-width: 100%;
+
+    max-height: 100vh;
+
+    overflow-y: auto;
+
+    padding: 30px;
+
+    background:
+        rgba(255, 255, 255, 0.12);
+
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.35);
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.45),
+        inset 0 1px 1px rgba(255, 255, 255, 0.40);
+}
+
+.caixa h2 {
+
+    margin: 0 0 20px;
+
+    color: white;
+
+    font-size: 23px;
+
+    text-shadow:
+        0 3px 15px rgba(0, 0, 0, 0.35);
+}
+
+.caixa p {
+
+    margin: 10px 0 5px;
+
+    color: rgba(255, 255, 255, 0.80);
+
+    font-size: 13px;
+}
+
+
+/* ========================================
+   CAMPOS
+======================================== */
+
+.caixa input,
+.caixa textarea,
+.caixa select {
+
+    width: 100%;
+
+    padding: 11px 13px;
+
+    margin-bottom: 8px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.25);
+
+    border-radius: 12px;
+
+    outline: none;
+
+    background:
+        rgba(255, 255, 255, 0.10);
+
+    color: white;
+
+    font-family: inherit;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    transition: 0.3s;
+}
+
+.caixa input::placeholder,
+.caixa textarea::placeholder {
+
+    color:
+        rgba(255, 255, 255, 0.55);
+}
+
+.caixa input:focus,
+.caixa textarea:focus,
+.caixa select:focus {
+
+    border-color:
+        rgba(255, 255, 255, 0.75);
+
+    background:
+        rgba(255, 255, 255, 0.16);
+
+    box-shadow:
+        0 0 18px rgba(255, 255, 255, 0.10);
+}
+
+.caixa select option {
+
+    background: #222;
+
+    color: white;
+}
+
+.caixa textarea {
+
+    min-height: 120px;
+
+    resize: vertical;
+}
+
+
+/* ========================================
+   INPUT DE IMAGEM
+======================================== */
+
+#file {
+
+    padding: 8px;
+
+    cursor: pointer;
+}
+
+#file::file-selector-button {
+
+    margin-right: 10px;
+
+    padding: 8px 12px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background:
+        rgba(255, 255, 255, 0.20);
+
+    color: white;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+#file::file-selector-button:hover {
+
+    background:
+        rgba(255, 255, 255, 0.30);
+}
+
+
+/* ========================================
+   BOTÕES DO MODAL
+======================================== */
+
+.botoes {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    margin-top: 15px;
+}
+
+.botoes button {
+
+    padding: 10px 18px;
+
+    border-radius: 18px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    color: white;
+
+    transition:
+        background 0.2s ease,
+        transform 0.15s ease;
+}
+
+.botoes button:active {
+
+    transform:
+        scale(0.96);
+}
+
+
+/* CANCELAR */
+
+#cancelar {
+
+    border:
+        1px solid rgba(255, 255, 255, 0.30);
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    color: white;
+}
+
+#cancelar:hover {
+
+    background:
+        rgba(255, 255, 255, 0.18);
+}
+
+
+/* PUBLICAR */
+
+#publicar {
+  
+    border: 1px solid rgba(255, 255, 255, 0.35);
+
+    background:
+        rgba(255, 255, 255, 0.22);
+
+    color: white;
+
+    backdrop-filter: blur(10px);
+}
+
+#publicar:hover {
+
+    background:
+        rgba(255, 255, 255, 0.32);
+}
+
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 800px) {
+
+    header {
+
+        width: calc(100% - 30px);
+
+        max-width: none;
+    }
+
+    .home {
+
+        width: calc(100% - 30px);
+
+        max-width: none;
+    }
+
+    #post {
+
+        width: calc(100% - 30px);
+
+        max-width: none;
+    }
+}
+
+
+/* ========================================
+   CELULAR
+======================================== */
+
+@media (max-width: 700px) {
+
+    /* HEADER */
+
+    header {
+
+        position: sticky;
+
+        width: 100%;
+
+        max-width: 100%;
+
+        margin: 0;
+
+        padding: 15px;
+
+        border-radius: 0;
+
+        border-left: none;
+
+        border-right: none;
+
+        gap: 10px;
+    }
+
+    header h1 {
+
+        font-size: 21px;
+
+        width: 100%;
+    }
+
+    header > p {
+
+        width: 100%;
+
+        flex: none;
+
+        font-size: 12px;
+    }
+
+    /* FILTRO */
+
+    .seach {
+
+        width: 50%;
+
+        margin: 0;
+    }
+
+    #viewPost {
+
+        width: 100%;
+
+        max-width: none;
+    }
+
+
+    /* INTRO */
+
+    .home {
+
+        width: calc(100% - 20px);
+
+        max-width: none;
+
+        margin: 15px auto;
+
+        padding: 22px 18px;
+
+        border-radius: 20px;
+    }
+
+    .home h1 {
+
+        font-size: 21px;
+    }
+
+
+    /* POSTS */
+
+    #post {
+
+        width: calc(100% - 20px);
+
+        max-width: none;
+
+        gap: 14px;
+
+        padding-bottom: 80px;
+    }
+
+    .post {
+
+        width: 100%;
+
+        padding: 20px 18px 58px;
+
+        border-radius: 19px;
+    }
+
+    .post h2 {
+
+        font-size: 18px;
+
+        line-height: 1.4;
+    }
+
+    .post h2::after {
+
+        display: block;
+
+        margin-left: 0;
+
+        margin-top: 5px;
+    }
+
+    .post p {
+
+        font-size: 15px;
+
+        line-height: 1.6;
+    }
+
+
+    /* IMAGEM */
+
+    .post img {
+
+        width: auto;
+
+        max-width: 100%;
+
+        max-height: 280px;
+
+        height: auto;
+
+        margin: 14px auto;
+    }
+
+
+    /* BOTÕES */
+
+    .post button {
+
+        bottom: 11px;
+    }
+
+    button.editar {
+
+        right: 57px;
+    }
+
+    button.excluir {
+
+        right: 13px;
+    }
+
+
+    /* BOTÃO CRIAR */
+
+    button#criarPost {
+
+        right: 18px;
+
+        bottom: 18px;
+
+        width: 52px;
+
+        height: 52px;
+    }
+
+
+    /* MODAL */
+
+    .modal {
+
+        padding: 12px;
+    }
+
+    .caixa {
+
+        width: 100%;
+
+        max-height: 92vh;
+
+        padding: 22px 18px;
+
+        border-radius: 22px;
+    }
+}
+
+
+/* ========================================
+   CELULARES PEQUENOS
+======================================== */
+
+@media (max-width: 400px) {
+
+    .post {
+
+        padding-left: 15px;
+
+        padding-right: 15px;
+    }
+
+    .post img {
+
+        max-height: 240px;
+    }
+
+    button#criarPost {
+
+        right: 15px;
+
+        bottom: 15px;
+    }
+}
+

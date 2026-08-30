@@ -63,6 +63,13 @@ async function enviarImagem() {
 // 3. CARREGAMENTO DE POSTS
 // ==========================================
 async function carregarPosts() {
+    containerPosts.innerHTML = `
+    <div id="loading">
+      <div class="spinner"></div>
+      <p>Carregando seus momentos...</p>
+    </div>
+  `;
+  
   try {
     const res = await fetch(`${API_URL}/posts`);
     const post = await res.json();
