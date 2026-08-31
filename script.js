@@ -64,10 +64,17 @@ async function enviarImagem() {
 // ==========================================
 async function carregarPosts() {
     containerPosts.innerHTML = `
-    <div id="loading">
-      <div class="spinner"></div>
-      <p>Carregando seus momentos...</p>
-    </div>
+   <div class="loading">
+  <div class="loading-text">
+    <span class="loading-text-words">L</span>
+    <span class="loading-text-words">O</span>
+    <span class="loading-text-words">A</span>
+    <span class="loading-text-words">D</span>
+    <span class="loading-text-words">I</span>
+    <span class="loading-text-words">N</span>
+    <span class="loading-text-words">G</span>
+  </div>
+</div>
   `;
   
   try {
